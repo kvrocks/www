@@ -1,37 +1,29 @@
-## Welcome to GitHub Pages
+This API is to be used through https://rapidapi.com
 
-You can use the [editor on GitHub](https://github.com/kvrocks/www/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
+Getting started
+---------------
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+1. Create a collection:
+    - `PUT /me/mycollection`
+2. Set a few items: 
+    - `PUT /me/mycollection/object` with `{"content is":"any valid json","max":"1mb"}`
+    - `PUT /me/mycollection/number` with `1234567890`
+    - `PUT /me/mycollection/text` with `"text serialized \\t as \\n json string is also fine"`
+3. Get any item:
+    - `GET /me/mycollection/object` => `{"content is":"any valid json","max":"1mb"}`
 
-### Markdown
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+Remarks
+-------
 
-```markdown
-Syntax highlighted code block
+All collections you create are accessible and visible only to you.
+The `me` in the REST endpoints is a special alias referring to your RapidAPI username.
 
-# Header 1
-## Header 2
-### Header 3
+Stored values should be in JSON format, with a raw size of at most 1 mb.
 
-- Bulleted
-- List
 
-1. Numbered
-2. List
+Limitations (during the beta phase)
+-----------------------------------
 
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/kvrocks/www/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+- Max 1 million items per collection.
+- No hot replica. Only backups every 24 hours.
