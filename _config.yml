@@ -1,3 +1,7 @@
 theme: jekyll-theme-cayman
 title: KeyValue.Rocks
 description: The online key value store that simply rocks!
+
+# to disable the button
+github:
+  is_project_page: false
