@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>KeyValue.Rocks</title>
+        <meta name="description" content="A key value store that rocks!">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        
+        <link rel="stylesheet" href="https://unpkg.com/mvp.css">
+        <link rel="stylesheet" type="text/css" href="css/icofont.min.css">
+        <link rel="stylesheet" href="css/style.css">
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/agate.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/languages/bash.min.js"></script>
+
+    </head>
+    <body>
+      
+<main>
+    <nav>
+        <ul>
+            <li><a href="#try-it"><span class="icofont-guiter"></span> Try it!</a></li>
+            <li><a href="#documentation"><span class="icofont-gear"></span> Documentation</a></li>
+            <li><a href="#pricing"><span class="icofont-dollar"></span> Pricing</a></li>
+            <li><a href="#FAQ"><span class="icofont-question-circle"></span> F.A.Q.</a></li>
+        </ul>
+        <ul>
+            <li><a href="#"><span class="icofont-login"></span> Dashboard</a></li>
+        </ul>
+    </nav>
+
+    <header>
+        <img src="guitar_hero.jpg" width="50%" />
+        <h1>A simple Key Value store that rocks!</h1>
+        <blockquote>{ by developers &RightArrow; for developers }</blockquote>
+    </header>
+
+
+    <section class="yellow">
+        <aside>
+            <big class="icofont-thumbs-up"></big>
+            <h3>Simple</h3>
+        </aside>
+        <aside>
+            <big class="icofont-gear"></big>
+            <h3>REST API</h3>
+        </aside>
+        <aside>
+            <big class="icofont-gift"></big>
+            <h3>Free plan</h3>
+        </aside>
+    </section>
+
+    <hr/>
+
+    <h2 id="try-it">Try it!</h2>
+    
+    <p>Use the special API Key: <code>demo</code> to try it out.</p>
+    
+    <p>
+        Please consider that this is a <i>shared playground</i>. 
+        Anyone can modify the data at anytime.
+        The content of this demo account is also reset every day (at midnight UTC).
+    </p>
+
+    <p>Here is a command line example:</p>
+    <pre><code class="bash">headers="-H 'X-API-KEY: demo'"
+
+# Creates a collection
+# (might fail since someone else has perhaps created it already)
+curl $headers -X POST "https://keyvalue.rocks/api/db?name=myCollection"
+
+# Sets a key/value pair
+curl $headers -X PUT "https://keyvalue.rocks/api/db/myCollection/myObj"    -d '{"json":"object"}'
+curl $headers -X PUT "https://keyvalue.rocks/api/db/myCollection/myList"   -d '["json","list"]'
+curl $headers -X PUT "https://keyvalue.rocks/api/db/myCollection/myNumber" -d '123'
+curl $headers -X PUT "https://keyvalue.rocks/api/db/myCollection/myText"   -d '"json string"'
+
+# Reads a key/value pair
+curl $headers -X GET "https://keyvalue.rocks/api/db/myCollection/myObj"    # => {"json":"object"}
+curl $headers -X GET "https://keyvalue.rocks/api/db/myCollection/myList"   # => ["json","list"]
+curl $headers -X GET "https://keyvalue.rocks/api/db/myCollection/myNumber" # => 123
+curl $headers -X GET "https://keyvalue.rocks/api/db/myCollection/myText"   # => "json string"
+</code></pre>
+
+
+    <h2 id="documentation">Documentation</h2>
+    <section>
+        <a href="https://api.keyvalue.rocks"><b>Explore the interactive API</b></a>
+    </section>
+
+    <iframe style="width:100%; height:90vh;" src="https://api.keyvalue.rocks"></iframe>
+    
+
+
+    <hr/>
+    
+    <h2 id="pricing">Pricing</h2>
+
+    <section>
+        <aside>
+            <h3>Basic</h3>
+            <ul>
+                <li>Shared infrastructure</li>
+                <li>Max 1 Gb storage</li>
+                <li>Max 1000 requests/hour</li>
+            </ul>
+            <a href="#"><b>Free forever!</b></a>
+        </aside>
+        <aside>
+            <h3>Pro</h3>
+            <ul>
+                <li>Low-latency dedicated servers?</li>
+                <li>Terrabytes of data?</li>
+                <li>Thousands of requests/second?</li>
+            </ul>
+            <a href="mailto:contact@keyvalue.rocks"><b>Contact us!</b></a>
+        </aside>
+    </section>
+
+
+    <hr/>
+
+    <h2 id="FAQ">F.A.Q.</h2>
+
+    <details>
+        <summary>Is the data stored redundantly?</summary>
+        <p>Yes, the data is stored on 3 separate physical servers.</p>
+    </details>
+
+    <details>
+        <summary>Can I have some external backup?</summary>
+        <p>Not out of the box, but you can dump the whole data by simply calling `https://keyvalue.rocks/api/{collection}.json`. It is up to you to automate fetching this file and where to store it.</p>
+    </details>
+
+    <details>
+        <summary>Where is the data stored?</summary>
+        <p>Currently, there is only a single cluster located in germany.</p>
+    </details>
+
+    <details>
+        <summary>Is there an SLA?</summary>
+        <p>For the "Pro" plan, the full month will be refunded in case of unexpected downtime greater than 1 minute.</p>
+    </details>
+
+    <details>
+        <summary>Are there technical limitations?</summary>
+        <p>There always are, but they are pretty hard to reach.</p>
+        <ul>
+            <li>Max key size: 32 Kb (UTF-8 encoded)</li>
+            <li>Max value size: none, but values < 1Mb are recommended</li>
+            <li>Max request size: 100 Mb</li>
+            <li>Max items: 1 billion per collection</li>
+            <li>Max collections: 1 million per account</li>
+        </ul>
+    </details>
+
+
+    <!--
+    <hr/>
+    <h2 id="roadmap">Roadmap</h2>
+
+    <p>These are future features we plan to work upon in the future. If you want to influence the priorities, get in touch with us!</p>
+    <section>
+        <aside>
+            <h3>Web Dashboard</h3>
+            <p>Because it's also nice to click on things instead of writing code!</p>
+        </aside>
+        <aside>
+            <h3>Client libraries</h3>
+            <p>In Python, Java, C#, Javascript, PHP...</p>
+        </aside>
+        <aside>
+            <h3>Share collection(s)</h3>
+            <p>To make them publicly available without API key.</p>
+        </aside>
+        <aside>
+            <h3>Changes/Delta queries</h3>
+            <p>To know what changed since a given time, or in a given timerange.</p>
+        </aside>
+        <aside>
+            <h3>Websockets</h3>
+            <p>High performance and less traffic!</p>
+        </aside>
+        <aside>
+            <h3>Realtime listeners</h3>
+            <p>To get notified on-the-fly about data changes.</p>
+        </aside>
+        <aside>
+            <h3>Time-To-Live</h3>
+            <p>For self-expiring items, whether it is seconds or years.</p>
+        </aside>
+        <aside>
+            <h3>Metrics</h3>
+            <p>To see how many requests per minute/hour/day/month and show it as graph in the dashboard.</p>
+        </aside>
+        <aside>
+            <h3>Read-only API Keys</h3>
+            <p>To grant restricted access to someone/something.</p>
+        </aside>
+        <aside>
+            <h3>Import/export</h3>
+            <p>From/to JSON, CSV, SQL...</p>
+        </aside>
+        <aside>
+            <h3>Versionning</h3>
+            <p>Have access to previous values of items.</p>
+        </aside>
+    </section>
+    -->
+</main>
+
+<footer>
+    <a href="mailto:">Contact us</a>
+    <a href="https://github.com/kvrocks">Github</a>
+</footer>
+    <script>hljs.highlightAll();</script>
+
+</body>
+</html>
+    
