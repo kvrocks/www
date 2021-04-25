@@ -71,19 +71,19 @@
 
 # Creates a collection
 # (might fail since someone else has perhaps created it already)
-curl $headers -X POST "https://keyvalue.rocks/api/db?name=myCollection"
+curl $headers -X POST "https://api.keyvalue.rocks/db?name=myCollection"
 
 # Sets a key/value pair
-curl $headers -X PUT "https://keyvalue.rocks/api/db/myCollection/myObj"    -d '{"json":"object"}'
-curl $headers -X PUT "https://keyvalue.rocks/api/db/myCollection/myList"   -d '["json","list"]'
-curl $headers -X PUT "https://keyvalue.rocks/api/db/myCollection/myNumber" -d '123'
-curl $headers -X PUT "https://keyvalue.rocks/api/db/myCollection/myText"   -d '"json string"'
+curl $headers -X PUT "https://api.keyvalue.rocks/db/myCollection/myObj"    -d '{"json":"object"}'
+curl $headers -X PUT "https://api.keyvalue.rocks/db/myCollection/myList"   -d '["json","list"]'
+curl $headers -X PUT "https://api.keyvalue.rocks/db/myCollection/myNumber" -d '123'
+curl $headers -X PUT "https://api.keyvalue.rocks/db/myCollection/myText"   -d '"json string"'
 
 # Reads a key/value pair
-curl $headers -X GET "https://keyvalue.rocks/api/db/myCollection/myObj"    # => {"json":"object"}
-curl $headers -X GET "https://keyvalue.rocks/api/db/myCollection/myList"   # => ["json","list"]
-curl $headers -X GET "https://keyvalue.rocks/api/db/myCollection/myNumber" # => 123
-curl $headers -X GET "https://keyvalue.rocks/api/db/myCollection/myText"   # => "json string"
+curl $headers -X GET "https://api.keyvalue.rocks/db/myCollection/myObj"    # => {"json":"object"}
+curl $headers -X GET "https://api.keyvalue.rocks/db/myCollection/myList"   # => ["json","list"]
+curl $headers -X GET "https://api.keyvalue.rocks/db/myCollection/myNumber" # => 123
+curl $headers -X GET "https://api.keyvalue.rocks/db/myCollection/myText"   # => "json string"
 </code></pre>
 
 
@@ -91,9 +91,6 @@ curl $headers -X GET "https://keyvalue.rocks/api/db/myCollection/myText"   # => 
     <section>
         <a href="https://api.keyvalue.rocks"><b>Explore the interactive API</b></a>
     </section>
-
-    <iframe style="width:100%; height:90vh;" src="https://api.keyvalue.rocks"></iframe>
-    
 
 
     <hr/>
@@ -117,7 +114,7 @@ curl $headers -X GET "https://keyvalue.rocks/api/db/myCollection/myText"   # => 
                 <li>Terrabytes of data?</li>
                 <li>Thousands of requests/second?</li>
             </ul>
-            <a href="mailto:contact@keyvalue.rocks"><b>Contact us!</b></a>
+            <a href="#coming_soon"><b>Coming soon!</b></a>
         </aside>
     </section>
 
@@ -133,7 +130,7 @@ curl $headers -X GET "https://keyvalue.rocks/api/db/myCollection/myText"   # => 
 
     <details>
         <summary>Can I have some external backup?</summary>
-        <p>Not out of the box, but you can dump the whole data by simply calling `https://keyvalue.rocks/api/{collection}.json`. It is up to you to automate fetching this file and where to store it.</p>
+        <p>Not out of the box, but you can dump the whole data by simply calling `https://api.keyvalue.rocks/{collection}.json`. It is up to you to automate fetching this file and where to store it.</p>
     </details>
 
     <details>
