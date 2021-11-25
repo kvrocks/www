@@ -1,3 +1,5 @@
+<img src="guitar_hero.jpg" />
+
 # KeyValue.Rocks
 
 ## test 
